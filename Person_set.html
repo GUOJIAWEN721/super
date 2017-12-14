@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="css/message.css" /> -->
+</head>
+
+<body class="layout-w" style="background-color:#F6F6F6;">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left" onclick="closeWin()"></i>
+        </a> 账号管理
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+    <div id="info" class="user-content">
+        <div class="cc-user-list clearfix">
+            <div class="block-item account-base clearfix">
+                <div class="aui-list-item-media">
+                    <div class="header-name-box">当前账户</div>
+                    <div class="header-enter-box" id="phone"></div>
+                </div>
+
+                <div class="header-enter-arrow f_right">
+                    <i class="aui-iconfont aui-icon-right" onclick="goEditSelf()"></i>
+                </div>
+                <div class="ucenter-header-right">
+                        <img src="images/media6.png" class="aui-img-round">
+                    </div>
+            </div>
+        </div>
+        <div class="cc-user-list clearfix">
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="account_security()">
+                    <dt>
+                        <b>账号安全</b>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix" id="div_changeyuan">
+                <dl class="all_more clearfix" onclick="fnClearCache()">
+                    <dt>
+                        <b>清除缓存</b>
+                    </dt>
+                    <dd>
+                        <b id="cacheSize"></b>
+                        <i class="aui-iconfont aui-icon-right" ></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--用户协议 start-->
+        <div class="cc-user-list clearfix">
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="user_agreement()">
+                    <dt>
+                        <b>用户协议</b>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="user_guide()">
+                    <dt>
+                        <b>用户指南</b>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="user_agreement()">
+                    <dt>
+                        <b>服务条款</b>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--用户协议 end-->
+
+        <!--意见反馈 start-->
+        <div class="cc-user-list clearfix">
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="suggestion()">
+                    <dt>
+                        <b>意见反馈</b>
+                    </dt>
+                    <dd>
+                        <b>反馈建议，帮助我们更快进步</b>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix">
+                    <dt>
+                        <b>当前版本</b>
+                    </dt>
+                    <dd>
+                        <b id="versions">1.1</b>
+                     <!--   <i class="aui-iconfont aui-icon-right"></i>-->
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="about_us()">
+                    <dt>
+                        <b>关于幢幢</b>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--关于幢幢 end-->
+
+        <!--退出登录 start-->
+        <div class="cc-user-list clearfix">
+            <div class="house-info-btn clerfix">
+                <div class="add">
+                    <a onclick="fnLogout();">退出登录</a>
+                </div>
+            </div>
+        </div>
+        <!--退出登录 end-->
+    </div>
+
+</body>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+apiready = function() {
+
+  $api.byId("phone").innerHTML=JSON.stringify($api.getStorage("userInfo").userPhone).replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+	$api.byId('versions').innerHTML=api.appVersion;
+    fnGetCacheSize();
+
+};
+function goEditSelf(){
+	api.openWin({
+       name: '修改',
+       url: 'update-selfMessage.html'
+
+    });
+}
+function fnGetCacheSize () {
+    api.getCacheSize(function(ret){
+        var size = ret.size;
+        var cacheSize = $api.byId('cacheSize');
+        size = parseInt((size/1024/1024)*100)/100;
+        cacheSize.innerHTML = size + ' M';
+    });
+}
+
+function fnClearCache () {
+    api.clearCache(function(){
+        api.toast({
+            msg:'清除完成'
+        });
+        setTimeout(function(){
+            fnGetCacheSize();
+        }, 300);
+    });
+}
+function fnLogout() {
+    api.confirm({
+        title: '提示',
+        msg: '是否退出登录',
+        buttons: ['确定', '取消']
+    }, function(ret, err) {
+        if (ret) {
+        	if(ret.buttonIndex==1){
+        	$api.rmStorage('userInfo');//清除保存的登录信息
+        	$api.rmStorage('userEmail');//清除保存的邮箱信息
+        	$api.rmStorage('houseid');//清除保存的房书id
+                api.openWin({
+                    name:'login',
+                    url:'login.html'
+                })
+            }
+
+
+        } else {
+            alert(JSON.stringify(err));
+        }
+    });
+
+
+}
+  function account_security(){
+    api.openWin({
+       name: '账户安全',
+       url: 'account_security.html'
+
+    });
+  }
+  function user_guide(){
+    api.openWin({
+       name: '用户指南',
+       url: 'user_guide.html'
+
+    });
+  }
+  function about_us(){
+    api.openWin({
+       name: '关于幢幢',
+       url: 'about_us.html'
+
+    });
+  }
+  function  suggestion(){
+    api.openWin({
+       name: '意见反馈',
+       url: ' suggestion.html'
+
+    });
+  }
+  function user_agreement(){
+  	 api.openWin({
+       name: 'Agreement',
+       url: 'agreement.html'
+
+    });
+  
+  }
+</script>
+</html>

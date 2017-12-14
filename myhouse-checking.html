@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/myhouse.css" />
+</head>
+
+<body class="layout-w">
+    <!--<header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 我的房书
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>-->
+
+    <!-- search-bar -->
+    <div class="aui-searchbar" id="search">
+        <div class="aui-searchbar-input aui-border-radius">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <input type="text" placeholder="输入小区名称或定制时间" id="search-input">
+            <div class="aui-searchbar-clear-btn">
+                <i class="aui-iconfont aui-icon-close"></i>
+            </div>
+        </div>
+        <div class="aui-searchbar-btn" tapmode>取消</div>
+    </div>
+    <!-- search-bar -->
+
+    <!-- category -->
+    <div class="aui-bar aui-bar-btn aui-bar-btn-full">
+        <div class="aui-bar-btn-item aui-active">
+            <span>定制中</span>
+        </div>
+        <div class="aui-bar-btn-item" onclick="goNow()">
+            <span>现有房书</span>
+        </div>
+        <div class="aui-bar-btn-item" onclick="goPast()">
+            <span>已下架</span>
+        </div>
+    </div>
+    <!-- category -->
+    <div class="split-grey"></div>
+
+    <ul class="myhouse-list" id="myhouse-list">
+      
+    </ul>
+
+    <div class="space clearfix">&nbsp;</div>
+    <div class="house-info-btn clerfix">
+        <div class="add">
+            <a onclick="goCancle()">取消</a>
+        </div>
+    </div>
+     <div class="push-status" id="pushStatus">上拉显示更多</div>
+      <script type="text/x-dot-template" id="newList">
+       {{~it:value:index}}
+      		<li class="house-list-content setoverflow">
+            <div class="house-box clearfix">
+                <div class="house-radio-left">
+                    <input type="checkbox" class="aui-checkbox" value="{{=value.HOUSEID}}" name="ids">
+                </div>
+                <div class="house-left-box">
+                    <div class="house-img-box">
+                        <img class="p-pic" src="images/pro-demo.jpg">
+                    </div>
+                    <p class="house-time">提交日期：
+                        <span>{{=value.COMMITTIME}}</span>
+                    </p>
+                </div>
+                <div class="list-descriptions">
+                    <div class="name-price-box clearfix">
+                        <p class="name-pro">{{=value.COMMUNITY}}</p>
+                        <p class="house-address">地址：
+                            <span>{{=value.LOCATION}}</span>
+                        </p>
+                        {{?value.STATUS==01}}
+                        <p class="status f_right red">审核中</p>
+                        {{?}}
+                         {{?value.STATUS==00}}
+                         <p class="status f_right blue">定制中</p>
+                         {{?}}
+                    </div>
+                </div>
+            </div>
+        </li>
+        {{~}}
+      </script>
+    <script type="text/javascript" src="js/api.js"></script>
+     <script type="text/javascript" src="js/doT.min.js"></script>
+     <script type="text/javascript" src="js/myjs/myhousecheck.js"></script>
+    <script type="text/javascript">
+    	
+    
+    
+        apiready = function () {
+            initEventListenter();
+    		initRefresh();
+    		fnGetWareList("");
+        
+            api.parseTapmode();
+        }
+        
+        var LIMIT=3;
+		var skip=0;
+		function initEventListenter() {//当手势从下往上滑时执行此方法
+    		api.addEventListener({
+        		name: 'scrolltobottom',
+        		extra: {
+            		threshold: 0
+        		}
+   	   		}, function(ret, err) {
+        		fnGetWareList($api.byId("search-input").value,true);
+    		});
+    
+    	}
+    	
+ 	
+    	function initRefresh() {//当手势是从上往下拉进行刷新时执行此方法
+    	api.setRefreshHeaderInfo({
+        	visible: true,
+        	loadingImg: 'images/loading_more.gif',
+        	bgColor: '#ccc',
+        	textColor: '#fff',
+        	textDown: '下拉刷新...',
+        	textUp: '松开刷新...',
+        	showTime: true
+    	}, function(ret, err) {
+        	//fnGetWareList("xilashuaxin");$api.byId("search-input").value
+        	fnGetWareList($api.byId("search-input").value);
+    	}); 
+   	} 
+      function fnGetWareList(keys,loadMore_) {
+    	if (loadMore_) {
+        	skip +=3;
+        	Limit+=3;
+        	
+    	} else {
+        	skip = 0;
+        	Limit=3;
+    	}
+        
+    	
+    	api.ajax({
+        	url: 'http://123.58.253.71:8808/FHMYSQL/houseList/list',
+        	method: 'post',
+       		data: {
+            values: {
+               userId:$api.getStorage("userInfo").userId,
+               status:'0',
+               skip:skip,
+               Limit:Limit,
+               search:keys       
+            }
+          }
+    	},function(ret, err) {
+        if (ret) {
+            //console.log($api.jsonToStr(ret));
+           
+            api.refreshHeaderLoadDone();
+            fnUpdateWareList(ret, loadMore_);
+        } else {
+            alert("请求出错，请返回重试！");
+        }
+    	});
+    	
+    
+     }
+    	
+   
+       function fnUpdateWareList(data_, loadMore_) {
+    var list = $api.byId('myhouse-list');
+    // 1. 编译模板函数
+    var tempFn = doT.template($api.byId('newList').innerHTML);
+    // 2. 多次使用模板函数
+    var resultText = tempFn(data_);
+    if (loadMore_) {
+        $api.append(list, resultText);
+    } else {
+        $api.html(list, resultText);
+    }
+    api.parseTapmode();
+    if (loadMore_) {
+        if (data_.length < 3) {
+            var pushStatus = $api.byId('pushStatus');
+            pushStatus.innerHTML = "没有啦！";
+  
+//          api.removeEventListener({
+//	            name:'scrolltobottom'
+//          });
+            
+        }
+    }
+  }
+        
+        
+        
+        
+        
+        
+        var searchBar = document.querySelector(".aui-searchbar");
+        var searchBarInput = document.querySelector(".aui-searchbar input");
+        var searchBarBtn = document.querySelector(".aui-searchbar .aui-searchbar-btn");
+        var searchBarClearBtn = document.querySelector(".aui-searchbar .aui-searchbar-clear-btn");
+        if (searchBar) {
+            searchBarInput.onclick = function () {
+                searchBarBtn.style.marginRight = 0;
+            }
+            searchBarInput.oninput = function () {
+                if (this.value.length) {
+                    searchBarClearBtn.style.display = 'block';
+                    searchBarBtn.classList.add("aui-text-info-r");
+                    searchBarBtn.textContent = "搜索";
+                } else {
+                    searchBarClearBtn.style.display = 'none';
+                    searchBarBtn.classList.remove("aui-text-info-r");
+                    searchBarBtn.textContent = "取消";
+                }
+            }
+        }
+        searchBarClearBtn.onclick = function () {
+            this.style.display = 'none';
+            searchBarInput.value = '';
+            searchBarBtn.classList.remove("aui-text-info-r");
+            searchBarBtn.textContent = "取消";
+        }
+        searchBarBtn.onclick = function () {
+            var keywords = searchBarInput.value;
+            if (keywords.length) {
+                //searchBarInput.blur();
+                //document.getElementById("search-keywords").textContent = keywords;
+ 				fnGetWareList($api.byId("search-input").value);
+            } else {
+                this.style.marginRight = "-" + this.offsetWidth + "px";
+                searchBarInput.value = '';
+                searchBarInput.blur();
+            }
+        }
+    </script>
+</body>
+
+</html>

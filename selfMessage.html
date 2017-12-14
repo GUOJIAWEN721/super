@@ -1,0 +1,434 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的资料</title>
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+</head>
+
+<body class="layout-w" style="background-color:#F6F6F6;">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 我的资料
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+    <!-- 我的资料 action="http://192.168.3.20:8080/FHMYSQL/addSelfMessage"-->
+    <form   method="POST" id="form_selfmessage" >
+    <div id="info" class="user-content">
+        <div class="cc-user-list clearfix">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">姓名</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="name" id="name" class="form-text-input" placeholder="Jason">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">手机号</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="phone" id="phone" class="form-text-input" placeholder="138****9898">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">微信号</em>
+                    <span class="input-wrapper">
+                        <input ype="text" name="WeChat" id="WeChat" class="form-text-input" placeholder="138****9898">
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="cc-user-list clearfix">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">公司</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="company" id="company" class="form-text-input" placeholder="公司">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">门店</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="store" id="store" class="form-text-input" placeholder="门店">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">职位</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="position" id="position" class="form-text-input" placeholder="职位">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">证件号码</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="IDCard" id="IDCard" class="form-text-input" placeholder="证件号码">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">从业时间</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="workhours" id="workhours" class="form-text-input" placeholder="从业时间(默认以年为单位)">
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="hidden-input">
+        	<input type="hidden" name="imagesAddress" id="imagesAddress" value="">	
+        </div>
+        <div class="cc-user-list user-info">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row" style="height: auto;">
+                    <em class="form-text-label">上传证件</em>
+                    <span class="input-wrapper">
+                        <!-- 上传前样式 -->
+                         <a class="card-img" id="images1" display="none">
+                            <img alt="" src="" id="photo1" >
+                        </a>
+                        <a class="card-img"  id="images2" display="none" >
+                            <img alt="" src="" id="photo2" >
+                        </a>
+                          <a class="card-img"  id="images3" display="none">
+                            <img alt="" src="" id="photo3">
+                        </a>
+                          <a class="card-img"  id="images4" display="none">
+                            <img alt="" src="" id="photo4">
+                        </a>
+                          <a class="card-img"  id="images5" display="none">
+                            <img alt="" src="" id="photo5">
+                        </a>
+                          <a class="card-img"  id="images6" display="none">
+                            <img alt="" src="" id="photo6"> 
+                        </a>
+                        <a href="#" class="card-img"  id="adds">
+                            <i class="aui-iconfont aui-icon-plus"  onclick="shangchuan()"></i>
+                        </a>
+                    
+                        <!-- 上传前样式 -->
+                        <!-- 上传后样式 -->
+                        <!-- 
+                        <a class="card-img">
+                            <img alt="" src="images/card.png">
+                        </a>
+                        <a class="card-img">
+                            <img alt="" src="images/card.png">
+                        </a>
+                        <a href="#" class="card-img">
+                            <i class="aui-iconfont aui-icon-plus"></i>
+                        </a> -->
+                        <!-- 上传后样式 -->
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="space clearfix">&nbsp;</div>
+        <div class="user-info-btn clerfix">
+            <div class="add">
+                <!--<a href="javascript:save();">保存</a>    <a href="javascript:document:form_selfmessage.submit();" onclick="check()">保存</a>  -->
+             
+                 <a onclick="checks()">保存</a>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- 我的资料 -->
+</body>
+
+</html>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/myjs/selfcheck.js"></script>
+<script type="text/javascript" src="js/jquery.validation.min.js"></script>
+<script type="text/javascript">
+        var i=0;
+//      function checks(){
+//      	if(''==$.trim($('#name').val())){
+//      		api.toast({
+//          		msg:'请填写姓名！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#phone').val())){
+//      		api.toast({
+//          		msg:'请填写手机号！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#WeChat').val())){
+//      		api.toast({
+//          		msg:'请填写微信号！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#company').val())){
+//      		api.toast({
+//          		msg:'请填写公司！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#store').val())){
+//      		api.toast({
+//          		msg:'请填写门店！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#position').val())){
+//      		api.toast({
+//          		msg:'请填写职位！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#IDCard').val())){
+//      		api.toast({
+//          		msg:'请填写身份证号！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#workhours').val())){
+//      		api.toast({
+//          		msg:'请填写从业时间！'
+//      		});
+//      		return false;
+//      	}
+//      	if(''==$.trim($('#imagesAddress').val())){
+//      		api.toast({
+//          		msg:'请至少上传一张证件照！'
+//      		});
+//      		return false;
+//      	}
+//      	
+//
+//      	 var values={};
+//           var x=$("#form_selfmessage").serializeArray();
+//            values[userId]=$api.getStorage("userInfo").userId;
+//           $.each(x, function(i, field){
+//           	var key=field.name;
+//              values[key]=field.value;
+//           });           
+//			 api.ajax({
+//	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+//	        	url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/addSelfMessage',
+//	        	method:'post',
+//	        	async:true,
+//	        	dataType:'text',
+//	        	data:{
+//	        		 userId:$api.getStorage("userInfo").userId,
+//	        		values:values  		
+//	       		 }
+//      	},function(ret,err){       	
+//      		if(ret){
+//      			api.openWin({
+//	        			name: '我的房书',
+//	        			url: 'myhouse-now-Win.html'
+//      			});
+//      			
+//      		}else{
+//      			alert(JSON.stringify(err));
+//      		}
+//      	});
+//      }
+		apiready = function() {
+    
+    		var userInfo=$api.getStorage("userInfo");
+    		if(userInfo==null){
+    			api.toast({
+            		msg:'请先登录！'
+        		});
+    			api.openWin({
+	        		name: '登录界面',
+	        		url: 'login.html'
+        		});
+    		} 
+    		else{
+    			//$api.attr($api.byId("name"), 'value',userInfo.userName);
+    			$api.attr($api.byId("phone"), 'value',userInfo.userPhone);
+    			$api.attr($api.byId("phone"), 'readonly',true);
+    		}     
+		}
+		function shangchuan(){
+		api.actionSheet({
+			title:'选择',
+			cancleTitle:'取消',
+			buttons:['拍照','相册']
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        		var sourceTypes=['camera','album'];
+        		
+        		api.getPicture({
+        			sourceType:sourceTypes[ret.buttonIndex-1],
+        			allowEdit:true,
+        			quality:50,
+        			targetWidth:750,
+        			targetHeight:750,
+        			saveToPhotoAlbum:false
+                },function(ret,err){
+                    	//coding...
+                    	if(ret){
+                    	fnUpload(ret.data);
+                    	}
+                });
+        		
+        	}
+        });
+	}
+	function fnUpload(fileurl){
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/addSelfPhoto',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		filename:new Date().getTime()	
+	        	},
+	        	files:{
+	        		file:fileurl
+	        	}
+	        }
+        },function(ret,err){
+        	//coding...
+        	
+        	if(ret){
+        		//alert(ret);
+        		i++;  	
+        		var str="http://123.58.253.71:8808/chuangchuangImg/selfImg/"+$api.trim(ret);     
+        		$("#images"+i).attr('display','block');                               
+                $("#photo"+i).attr('src',str);
+                var oldvalue=$api.attr($api.byId("imagesAddress"), 'value');
+            	$api.attr($api.byId("imagesAddress"), 'value',oldvalue+$api.trim(ret)+";");
+            	if(i>=6){
+            		$("#adds").display="none";
+            	
+            	}
+            	//alert($api.attr($api.byId("imagesAddress"), 'value'));
+        		 //fnUpdate(ret);
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+	function fnUpdate(rets){
+		var userInfo=$api.getStorage("userInfo");
+		api.ajax({
+	        url:''+userInfo.userId,
+	        method:'put',
+	        data:{
+	        	values:{
+	        		rets:rets
+	        	}
+	        }
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        		 //alert(JSON.stringify(ret));
+        		 
+        		 fnUpdateLocal(ret);
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+	function fnUpdateLocal(data){
+		var imgs=$api.byId("imgs");
+		api.imageCache({
+	        url:'data.avatar.url'
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        	imgs.style.background='url('+ret.url+')';
+        	}
+        });
+	}
+</script>
+	
+<!--这是获取form表单的值，验证是否为空//		var name=$.trim($('#name').val());
+//		var phone=$.trim($('#phone').val());
+//		var WeChat=$.trim($('#WeChat').val());
+//		var company=$.trim($('#company').val());
+//		var store=$.trim($('#store').val());
+//		var position=$.trim($('#position').val());
+//		var IDCard=$.trim($('#IDCard').val());
+//		var workhours=$.trim($('#workhours').val());
+//		if(name==''||phone==''||WeChat==''||company==''||store==''||position==''||position==''||IDCard==''||workhours==''){
+//			alert("请将信息输入完整");
+//			return ;
+//		}-->
+
+
+<!--这是用的手机端的表单验证，但是没反应<script type="text/javascript">
+	$(function(){
+			jQuery.validator.addMethod("isMobile", function (value, element) {
+				var length = value.length;
+				var mobile = /^(13[0-9]{9})|(18[0-9]{9})|(14[0-9]{9})|(17[0-9]{9})|(15[0-9]{9})$/;
+				return this.optional(element) || (length == 11 && mobile.test(value));
+			}, "请正确填写您的手机号码");
+			
+			
+			jQuery.validator.addMethod("isIDCard", function (value, element) {
+				var reg = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;  
+				return this.optional(element) ||reg.test(value);
+			}, "请正确填写您的证件号码");
+			
+			
+            $('#form_selfmessage').validate({
+                errorPlacement: function (error, element) {//错误提示的位置
+                    var error_td = element.parent('div');
+                    error_td.append(error);
+                },
+                rules: {
+                    name: "required",
+                    phone: {
+                    	required: true,
+                        isMobile: true
+                        
+                    },
+                    WeChat:"required",
+                    company:"required",
+                    store:"required",
+                    position:"required",
+                    IDCard: {
+                    	required: true,
+                        isIDCard: true
+                    },
+                    workhours:"required"
+                },
+                messages: {
+                    name: "请输入用户名",
+                    phone: "请输入密码",
+                    WeChat:"请输入微信号",
+                    company:"请输入所属公司",
+                    store:"请输入门店地址",
+                    position:"请输入职位",
+                    IDCard:"请输入证件号码",
+                    workhours:"请输入从业时间"
+                    
+                },   
+                submitHandler: function (form) {//验证成功
+  				             alert("验证成功");
+                }
+            })
+	})-->

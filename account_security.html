@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>账户安全</title>
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+</head>
+
+<body class="layout-w" style="background-color:#F6F6F6;">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 账户安全
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+    <!-- 我的资料 -->
+    <div id="info" class="user-content">
+        <div class="cc-user-list clearfix">
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="open_changephone()">
+                    <dt>
+                        <b>手机号</b>
+                        <b id="phone"></b>
+                    </dt>
+                    <dd>
+                        <a href="#">
+                            <b>修改</b>
+                        </a>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="open_email()">
+                    <dt>
+                        <b>邮箱</b>
+                    </dt>
+                    <dd>
+                        <a href="#">
+                            <b>去绑定</b>
+                        </a>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="cc-user-list clearfix">
+            <div class="order_all block-item clearfix">
+                <dl class="all_more clearfix" onclick="open_changpwd()">
+                    <dt>
+                        <a href="#">
+                            <b>修改密码</b>
+                        </a>
+                    </dt>
+                    <dd>
+                        <i class="aui-iconfont aui-icon-right"></i>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <!-- 我的资料 -->
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+     var phonenumber=JSON.stringify($api.getStorage("userInfo").userPhone);
+     $api.byId("phone").innerHTML=phonenumber.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+
+  })
+  function open_changpwd(){
+    api.openWin({
+      name:'修改密码',
+      url: 'change_pwd.html'
+    });
+  }
+  function open_changephone(){
+    api.openWin({
+      name:'修改手机号',
+      url: 'change_phone.html'
+    });
+  }
+  function open_email(){
+    api.openWin({
+      name:'绑定邮箱',
+      url: 'forEmail_one.html'
+    });
+  }
+
+</script>
+</html>

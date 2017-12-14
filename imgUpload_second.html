@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 提交预览
+        <a class="aui-btn aui-pull-right">
+        </a>
+    </header>
+    <!-- 基本资料 -->
+    <div id="info">
+        <div class="house-info clearfix">
+            <div class="header">室内照片</div>
+            <div class="block-item clearfix">
+                <div class="house-img-2">
+                	<input type="hidden" name="indoorImages" id="indoorImages" value="">
+                    <!-- 上传前样式 -->
+                    <div class="before">
+
+                        <a class="card-img">
+                            <img alt="" src="" id="indoor1" >
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="indoor2" >
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a  class="card-img">
+                            <img alt="" src="" id="indoor3" >
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a  class="card-img">
+                            <img alt="" src="" id="indoor4" >
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a  class="card-img">
+                            <img alt="" src="" id="indoor5" >
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a  class="card-img">
+                            <img alt="" src="" id="indoor6" >
+                        </a>
+                    </div>
+
+                    <div class="before">
+                        <a href="#" class="card-img">
+                            <i class="aui-iconfont aui-icon-plus"  onclick="indoorUpload()"></i>
+                        </a>
+                    </div>
+                    <!-- 上传前样式 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="house-info mt15 clearfix">
+            <div class="header">公共区域照片（楼道、电梯间、大堂等）</div>
+            <div class="block-item clearfix">
+                <div class="house-img-2">
+                <input type="hidden" name="outdoorImages" id="outdoorImages" value="">
+                    <!-- 上传后样式 -->
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor1">
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor2">
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor3">
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor4">
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor5">
+                        </a>
+                    </div>
+                    <div class="before">
+                        <a class="card-img">
+                            <img alt="" src="" id="outdoor6">
+                        </a>
+                    </div>
+
+                    <div class="before">
+                        <a href="#" class="card-img">
+                            <i class="aui-iconfont aui-icon-plus"  onclick="outdoorUpload()"></i>
+                        </a>
+                    </div>
+                    <!-- 上传后样式 -->
+                </div>
+            </div>
+        </div>
+
+        <div class="space clearfix">&nbsp;</div>
+        <div class="house-info-btn clerfix">
+            <div class="add"><a onclick="goSecond()">预览</a></div>
+        </div>
+    </div>
+    <!-- 基本资料 -->
+</body>
+<script type="text/javascript">
+var houseid=api["pageParam"]["houseid"];
+if(houseid==""||houseid==null){
+   api.closeWin();
+}
+	var i=0;
+	var j=0;
+	function indoorUpload(){
+		api.actionSheet({
+			title:'选择',
+			cancleTitle:'取消',
+			buttons:['拍照','相册']
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        		var sourceTypes=['camera','album'];
+
+        		api.getPicture({
+        			sourceType:sourceTypes[ret.buttonIndex-1],
+        			allowEdit:true,
+        			quality:50,
+        			targetWidth:750,
+        			targetHeight:750,
+        			saveToPhotoAlbum:false
+                },function(ret,err){
+                    	//coding...
+                    	if(ret){
+                    	fnUpload(ret.data);
+                    	}
+                });
+
+        	}
+        });
+	}
+	function fnUpload(fileurl){
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/addIndoorPhoto',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		filename:new Date().getTime()
+	        	},
+	        	files:{
+	        		file:fileurl
+	        	}
+	        }
+        },function(ret,err){
+        	//coding...
+
+        	if(ret){
+        		//alert(ret);
+        		i++;
+        		var str="http://123.58.253.71:8808/chuangchuangImg/indoorImg/"+$api.trim(ret);
+                $("#indoor"+i).attr('src',str);
+                var dom=document.getElementById("indoor"+i).parentNode.parentNode;
+                $api.removeAttr(dom, 'class');
+                var oldvalue=$api.attr($api.byId("indoorImages"), 'value');
+            	$api.attr($api.byId("indoorImages"), 'value',oldvalue+$api.trim(ret)+";");
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+	function outdoorUpload(){
+		api.actionSheet({
+			title:'选择',
+			cancleTitle:'取消',
+			buttons:['拍照','相册']
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        		var sourceTypes=['camera','album'];
+
+        		api.getPicture({
+        			sourceType:sourceTypes[ret.buttonIndex-1],
+        			allowEdit:true,
+        			quality:50,
+        			targetWidth:750,
+        			targetHeight:750,
+        			saveToPhotoAlbum:false
+                },function(ret,err){
+                    	//coding...
+                    	if(ret){
+                    	outdoorFnUpload(ret.data);
+                    	}
+                });
+
+        	}
+        });
+	}
+	function outdoorFnUpload(fileurl){
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/addOutdoorPhoto',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		filename:new Date().getTime()
+	        	},
+	        	files:{
+	        		file:fileurl
+	        	}
+	        }
+        },function(ret,err){
+        	//coding...
+
+        	if(ret){
+        		//alert(ret);
+        		j++;
+        		var str="http://123.58.253.71:8808/chuangchuangImg/outdoorImg/"+$api.trim(ret);
+        		var dom=document.getElementById("outdoor"+j).parentNode.parentNode;
+                $api.removeAttr(dom, 'class');
+                $("#outdoor"+j).attr('src',str);
+                var oldvalue=$api.attr($api.byId("outdoorImages"), 'value');
+            	$api.attr($api.byId("outdoorImages"), 'value',oldvalue+$api.trim(ret)+";");
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+	function goSecond(){
+		var indoorImages=$api.byId("indoorImages").value;
+	    var outdoorImages=$api.byId("outdoorImages").value;
+		if(''==indoorImages){
+			api.toast({
+            	msg:'请上传室内照片！'
+        	});
+        	return false;
+		}
+		if(''==outdoorImages){
+			api.toast({
+            	msg:'请上传公共区域照片！'
+        	});
+        	return false;
+		}
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/secondStepImg',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		houseid:$api.getStorage('houseid'),
+	        		indoorImages:indoorImages,
+	        		outdoorImages:outdoorImages
+
+	        	}
+
+	        }
+        },function(ret,err){
+        	if(ret){
+        		 api.openWin({
+	    			name:'previewWins',
+	    			url: 'preview.html',
+            pageParam: {
+               houseid: houseid
+            }
+    			});
+
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+
+</script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
+
+</html>

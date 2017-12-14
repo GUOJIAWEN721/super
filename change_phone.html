@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 换绑手机
+        <a class="aui-btn aui-pull-right"></a>
+    </header>
+    <div class="change header">为了账号安全，需要验证当前手机有效性</div>
+    <div class="login-registered-box" style="padding: 0 10px;">
+            <div class="login-content">
+                <div class="forms-list">
+                    <div class="forms-content clearfix">
+                        <div class="forms-icon f_left" >
+                            <span id="phone"></span>
+                        </div>
+                        <div class="forms-input f_left">
+                            <input id="log_phone" type="text" name="login" class="js-login-phone" placeholder="新手机号">
+                        </div>
+                    </div>
+                </div>
+                <div class="forms-list code-box">
+                    <div class="forms-content clearfix">
+                        <div class="forms-icon f_left">
+                            验证码
+                        </div>
+                        <div class="forms-input f_left">
+                            <input id="log_click" type="text" name="password" class="js-login-pwd" placeholder="">
+                        </div>
+                        <div class="btn-code f_right">
+                            <button type="button" class="js-auth-code-btn" onclick="sms();">获取验证码</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-join-cc mt30">
+                <button type="button" id="btn-submit" class="js-submit11 btn-registered" onclick="updata()">确定</button>
+            </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script src="js/layer_dialog/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="js/layer_dialog/need/layer.css" />
+<script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mvalidate.css">
+<script type="text/javascript" src="js/myjs/editPhone.js"></script>
+<script type="text/javascript">
+var smsVerify = null;
+apiready = function(){
+  smsVerify = api.require('smsVerify');
+
+  register();
+};
+
+// 注册，初始化z
+function register(){
+  smsVerify.register(function(ret, err){
+    if(ret.status){
+        //api.alert({msg: '注册成功'});
+    }else{
+        api.alert({msg: err.code+' 注册失败'});
+    }
+  });
+}
+// 发短信验证码
+function sms(){
+var phone = document.getElementById("log_phone").value;
+//判断手机号格式是否合法
+smsVerify.sms({
+  phone:phone,
+},function(ret, err){
+  if(ret.status){
+    // 新增的安卓智能验证功能
+    if( ret.smart == true ){	// 安卓版特有功能 智能验证成功
+      api.alert({msg: '智能验证成功'});
+      document.getElementById("log_click").value="智能验证成功";
+      $("#log_click").readOnly=true;
+    }else{
+        $("#btn_check").value="验证码发送成功";
+    }
+  }else{
+    api.alert({msg: err.code+' 短信发送失败'});
+  }
+});
+}
+function updata(){
+// 校验验证码
+var phone = document.getElementById("log_phone").value;
+var code = document.getElementById("log_click").value;
+if(!(/^1[34578]\d{9}$/.test(phone))){
+  layer.open({
+     content: '手机号不合法！',
+     skin:"msg",
+     time: 2//2秒钟后消失
+  });
+  $("#log_phone").focus();
+  document.getElementById("log_phone").value="";
+  document.getElementById("log_click").value="";
+}else {
+  api.ajax({
+    url: 'http://123.58.253.71:8808/FHMYSQL/checkphone',
+    method: 'post',
+    dataType:'text',
+    data: {
+      values: {
+        phone:phone
+      }
+    }
+  },
+  function(ret, err){
+    if (ret) {
+      //alert(ret);
+      if(ret=="error"){
+         layer.open({
+            content: '手机号已被注册！',
+            skin:"msg",
+            time: 2//2秒钟后消失
+         });
+         $("#log_phone").focus();
+         document.getElementById("log_phone").value="";
+         document.getElementById("log_click").value="";
+      }
+      if (ret=="success") {
+         if ($api.byId('log_click').value!="智能验证成功") {
+           smsVerify.verify({
+              phone:phone,
+              code:code,
+           },function(ret, err){
+                if(ret.status){
+                //验证通过提交更改
+                 edit_phone(phone);
+                }else{
+                    layer.open({
+                      content: '验证码错误！',
+                      skin:"msg",
+                    });
+                    document.getElementById("log_click").value="";
+                }
+           });
+         }else{
+            edit_phone(phone);
+         }
+       }
+     } else {
+         layer.open({
+            content: '出现了一个错误请稍后重试！',
+            skin:"msg",
+            time: 2//2秒钟后消失
+         });
+       }
+   });//end ajax
+}
+}
+function edit_phone(phone){
+ api.ajax({
+   url: 'http://123.58.253.71:8808/FHMYSQL/updatePhone',
+   method: 'post',
+   dataType:'text',
+   data: {
+     values: {
+       phone:phone,
+       userid:$api.getStorage("userInfo").userId
+     }
+   }
+ },
+function(ret, err){
+  if (ret=="success") {
+    //将前台保存手机号换为最新版
+    //$api.setStorage('key', 'value');
+     $api.setStorage('userInfo.', 'value');
+
+     api.openWin({
+        name: 'main',
+        url: 'Person_set.html',
+     });
+  } else {
+      alert("失败");
+      api.alert({ msg: JSON.stringify(err) });
+  }
+ });
+}
+
+</script>
+</html>

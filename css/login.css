@@ -1,0 +1,158 @@
+@charset "utf-8";
+
+/* addtime:2017/09/11 author:SeinaLiu */
+
+/*================ login ================*/
+.login-registered-box {
+    padding: 8px 15px;
+}
+.login-tab{border-bottom: 1px solid #EFEDEB;}
+.login-tab li{
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding: 10px 0;
+    text-align: center;
+}
+.login-tab li a{
+    color: #262626;
+    font-size: .8rem;
+}
+.login-tab li.active{border-bottom:2px solid #FFE24C;}
+.login-content .forms-content{
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #EFEDEB;
+}
+.login-content {margin: 0 5px;}
+.login-content .forms-content .forms-icon{
+    padding: 0;
+    line-height: 30px;
+    height: 30px;
+    width: 18%;
+    text-align: left;
+    font-size: .7rem;
+}
+.forms-content .forms-input {width: 82%;}
+.forms-content .forms-input input {
+    height: 30px;
+    line-height: 30px;
+    border: 0 none;
+    font-size: .7rem;
+    color: #333;
+    width: 100%;
+    outline: 0;
+}
+.forget-pwd{
+    font-size: 14px;
+    text-align: right;
+    padding: 15px 0;
+}
+.forget-pwd a{
+    color: #ccc;
+    font-size: .6rem;
+}
+
+.btn-join-cc button {
+    width: 100%;
+    height: 38px;
+    border-radius: 4px;
+    border: 0 none;
+    background-color: #FB5254;
+    color: #fff;
+    font-size: .8rem;
+}
+.btn-join-cc button.waiting{
+    background-color: #D8D8D8;
+}
+/*================ login ================*/
+
+/*=============== register ===============*/
+.agree-provision{
+    text-align: left;
+    font-size: 14px;
+    padding: 15px 0;
+}
+.forms-list.code-box .forms-border {
+    width: 60%;
+}
+.forms-list.code-box .forms-content .forms-input {
+    width: 46%;
+}
+.code-box .btn-code {
+    width: 36%;
+    padding-left: 3%;
+}
+.code-box .btn-code button {
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #FFE24F;
+    border-radius: 3px;
+    color: #262626;
+    font-size: 14px;
+    background-color: #FFE24F;
+    cursor: pointer;
+}
+/*=============== register ===============*/
+
+.motify{
+    display:none;
+    position:fixed;
+    top:35%;
+    left:50%;
+    width:220px;
+    padding:0;
+    margin:0 0 0 -110px;
+    z-index:9999;
+    background:rgba(0,0,0,.8);
+    color:#fff;
+    font-size:14px;
+    line-height:1.5em;
+    border-radius:6px;
+    -webkit-box-shadow:0 1px 2px rgba(0,0,0,.2);
+    box-shadow:0 1px 2px rgba(0,0,0,.2)
+}
+.motify .motify-inner{
+    padding:10px 10px;
+    text-align:center;
+    word-wrap:break-word
+}
+
+/*=============== 换绑手机 ===============*/
+.change.header{
+    margin: 5px 0 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #9B9EA1;
+    line-height: 1;
+    padding: .5rem .4rem;
+    font-size: .6rem;
+}
+.code-box .btn-code img {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #FFE24F;
+    border-radius: 3px;
+    color: #262626;
+    font-size: 14px;
+    background-color: #FFE24F;
+    cursor: pointer;
+}
+
+/*=============== 绑定邮箱 ===============*/
+.add-email{
+    color: #9B9EA1;
+    font-size: .7rem;
+}
+.add-email span{padding: 0 5px;}
+.re-code{
+    color: #A5A6B2;
+    font-size: .7rem;
+}
+
+

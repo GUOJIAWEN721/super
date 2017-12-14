@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+      <script type="text/javascript" src="js/api.js"></script>
+</head>
+
+<body class="layout-w" style="background-color:#FAFAFA;">
+    <!--<header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 意见反馈
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>-->
+
+    <!-- 意见反馈 -->
+   <!-- <div class="feedback-main clearfix">
+        <div class="header">
+            我要反馈
+        </div>
+        <form class="js-login-form" method="#" action="#">
+            <div class="feedback">
+                <textarea class="feedback-content" rows="8" placeholder="请输入您的反馈意见…"></textarea>
+            </div>
+            <div class="btn-join-cc" style="padding: 0 8px;">
+                <button type="submit" id="btn-submit" class="js-submit11 btn-registered">提&nbsp;&nbsp;交</button>
+            </div>
+        </form>
+    </div>-->
+    <!-- 我的资料 -->
+
+    <!-- 侧拉部分 -->
+    <div class="user-main-bg">
+		<div class="user-main">
+			<div class="user-main-head">
+				<img src="images/media6.png"  class="aui-img-round"/>
+			</div>
+			<p id="phonenumber">138****7766</p>
+			<div class="user-main-vip">
+				<span><img src="images/per_1.png" />会员</span>
+			</div>
+			<ul>
+				<li>
+					<a onclick="myhouse()"><img src="images/per_2.png" />我的房书</a>
+				</li>
+				<li>
+					<a onclick="self()"><img src="images/per_3.png" />个人信息</a>
+				</li>
+				<li>
+					<a onclick="user_guide()"><img src="images/per_4.png" />定制指南</a>
+				</li>
+				<li>
+					<a onclick="suggestion()"><img src="images/per_5.png" />意见反馈</a>
+				</li>
+				<li>
+					<a onclick="goSetting()"><img src="images/per_6.png" />设置</a>
+				</li>
+			</ul>
+		</div>
+    </div>
+    <!-- 侧拉部分 -->
+</body>
+<script type="text/javascript">
+	 apiready = function () {
+	 	$api.byId('phonenumber').innerHTML=JSON.stringify($api.getStorage("userInfo").userPhone).replace(/(\d{3})\d{4}(\d{4})/, '$1****$2');
+	 }
+	function myhouse(){
+    api.openWin({
+       name: '我的房书',
+       url: 'myhouse-now-Win.html'
+       
+    });
+    }
+	function self(){
+    api.openWin({
+       name: '个人信息',
+       url: 'update-selfMessage.html'
+       
+    });
+    }
+	function user_guide(){
+    api.openWin({
+       name: '用户指南',
+       url: 'user_guide.html'
+       
+    });
+  }
+	 function  suggestion(){
+    api.openWin({
+       name: '意见反馈',
+       url: ' suggestion.html'
+      
+    });
+  }
+	function goSetting(){
+		api.openWin({
+	    name:'goSet',
+	    url: 'Person_set.html'
+    });
+	}
+</script>
+</html>

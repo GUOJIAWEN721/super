@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 图片上传
+        <a class="aui-btn aui-pull-right">
+        </a>
+    </header>
+
+    <!-- 基本资料 -->
+    <div id="info">
+        <div class="house-info clearfix">
+            <div class="header">房产证平面图</div>
+            <div class="block-item clearfix">
+                <div class="house-img-1">
+                  <!--  <img src="images/house-1.png" name='premisesPermit'>-->
+                    <img src="images/house-1.png" name='premisesPermit'>
+                    <div class="plus"><i class="aui-iconfont aui-icon-plus" onclick="shangchuan('premisesPermit')"></i></div>
+                </div>
+            </div>
+        </div>
+          <input type="hidden" name="premisesPermit" >
+        <div class="house-info mt15 clearfix">
+            <div class="header">户型图</div>
+            <div class="block-item clearfix">
+                <div class="house-img-1">
+                  <!--   <img src="images/house-2.png" name='doorModel'>-->
+                        <img src="images/house-2.png" name='doorModel'>
+                    <div class="plus"><i class="aui-iconfont aui-icon-plus" onclick="shangchuan('doorModel')"></i></div>
+                </div>
+            </div>
+        </div>
+        <input type="hidden" name="doorModel" >
+        <div class="space clearfix">&nbsp;</div>
+        <div class="house-info-btn clerfix">
+            <div class="add"><a onclick="goOn()">下一步</a></div>
+        </div>
+    </div>
+    <!-- 基本资料 -->
+</body>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript">
+var houseid=api["pageParam"]["houseid"];
+if(houseid==""||houseid==null){
+   api.closeWin();
+}
+	function shangchuan(idname){
+		api.actionSheet({
+			title:'选择',
+			cancleTitle:'取消',
+			buttons:['拍照','相册']
+        },function(ret,err){
+        	//coding...
+        	if(ret){
+        		var sourceTypes=['camera','album'];
+
+        		api.getPicture({
+        			sourceType:sourceTypes[ret.buttonIndex-1],
+        			allowEdit:true,
+        			quality:50,
+        			targetWidth:750,
+        			targetHeight:750,
+        			saveToPhotoAlbum:false
+                },function(ret,err){
+                    	//coding...
+                    	if(ret){
+                    	fnUpload(ret.data,idname);
+                    	}
+                });
+
+        	}
+        });
+	}
+		function fnUpload(fileurl,idname){
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/addDoormodelPhoto',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		filename:new Date().getTime()
+	        	},
+	        	files:{
+	        		file:fileurl
+	        	}
+	        }
+        },function(ret,err){
+
+
+        	if(ret){
+
+
+        		var str="http://123.58.253.71:8808/chuangchuangImg/doormodelImg/"+$api.trim(ret);
+        	    document.getElementsByName(idname)[1].value=$api.trim(ret);
+        	    document.getElementsByName(idname)[0].src=str;
+                //$("#"+idname).attr('src',str);
+                //var oldvalue=$api.attr($api.byId("imagesAddress"), 'value');
+            	//$api.attr($api.byId("imagesAddress"), 'value',oldvalue+$api.trim(ret)+";");
+            	//alert($api.attr($api.byId("imagesAddress"), 'value'));
+        		 //fnUpdate(ret);
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+	}
+	function goOn(){
+		var premisesPermit=document.getElementsByName("premisesPermit")[1].value;
+	    var doorModel=document.getElementsByName("doorModel")[1].value;
+		if(''==premisesPermit){
+			api.toast({
+            	msg:'请上传房产证平面图！'
+        	});
+        	return false;
+		}
+		if(''==doorModel){
+			api.toast({
+            	msg:'请上传户型图！'
+        	});
+        	return false;
+		}
+		api.ajax({
+	        //url:'http://192.168.3.20:8080/FHMYSQL/selfmsg/addSelfphoto',123.58.253.71:8808/FHMYSQL
+	        url:'http://123.58.253.71:8808/FHMYSQL/selfmsg/firstStepImg',
+	        method:'post',
+	        async:true,
+	        dataType:'text',
+	        data:{
+	        	values:{
+	        		houseid:houseid,
+	        		premisesPermit:premisesPermit,
+	        		doorModel:doorModel
+
+	        	}
+
+	        }
+        },function(ret,err){
+        	if(ret){
+        		 api.openWin({
+	    			name:'GouploadIndoorImg',
+	    			url: 'imgUpload_second.html',
+            pageParam: {
+               houseid: houseid
+            }
+    			});
+
+        	}else{
+        		alert(JSON.stringify(err));
+        	}
+        });
+
+
+
+
+	}
+
+
+
+</script>
+</html>

@@ -1,0 +1,3 @@
+function closeWin(){
+  api.closeWin();
+}

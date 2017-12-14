@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 基本信息
+        <a class="aui-btn aui-pull-right">
+        </a>
+    </header>
+
+    <!-- 基本资料 -->
+    <div id="info">
+      <form id="form2" action="">
+        <div class="house-info clearfix">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">小区名称</em>
+                    <span class="input-wrapper community-name" id="housename">海润国际公寓</span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">房源位置</em>
+                    <span class="input-wrapper">
+                        <input id="position_one" type="text" class="form-text-input short-input" name="position_one">号楼/座
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <div class="form-row form-text-row">
+                    <em class="form-text-label"></em>
+                    <span class="input-wrapper">
+                        <input id="position_two" type="text" class="form-text-input short-input" name="position_two">单元
+                    </span>
+                </div>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label"></em>
+                    <span class="input-wrapper">
+                        <input id="position_three" type="text" class="form-text-input short-input" name="position_three">室
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">实际楼层</em>
+                    <span class="input-wrapper">
+                        <input id="floor" type="text" class="form-text-input short-input" name="floor">楼
+                        <br>
+                    </span>
+                    <div class="tips">注：具体门牌号不会显示在发布的房书中，信息仅用于房书相关数据制作。</div>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row" style="line-height: 32px;">
+                    <em class="form-text-label">居室</em>
+                    <span class="input-wrapper aui-list-item-input">
+                        <select id="num" name="num">
+                            <option value=""selected disabled>请选择</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <div class="form-row form-text-row">
+                    <em class="form-text-label">面积</em>
+                    <span class="input-wrapper">
+                        <input id="area" type="text" class="form-text-input short-input" name="area">㎡
+                    </span>
+                </div>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">销售总价</em>
+                    <span class="input-wrapper">
+                        <input id="total" type="text" class="form-text-input short-input"  name="total">万元
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="house-info mt15 clearfix">
+            <div class="header">
+                搜索标签关键字
+            </div>
+            <div class="block-item clearfix">
+                <div class="aui-list-item-inner search-key">
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="带花园"  value="带花园"> 带花园</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="带露台"  value="带露台"> 带露台</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="跃层" value="跃层"> Loft/跃层</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="双卫"  value="双卫"> 双卫</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="明卫"  value="明卫"> 明卫</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="地铁"  value="地铁"> 地铁</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="商住两用"  value="商住两用"> 商住两用</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="个人房源"  value="个人房源"> 个人房源</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="满五唯一"  value="满五唯一"> 满五唯一</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="满五唯二"  value="满五唯二"> 满二唯一</label>
+                    <label>
+                        <input class="aui-checkbox" type="checkbox" name="checkbox" id="test"  value="24小时热水"> 24小时热水</label>
+                </div>
+            </div>
+            <div class="block-item clearfix">
+                <div class="form-row form-text-row">
+                    <em class="form-text-label">备注/推荐</em>
+                    <span class="input-wrapper">
+                        <input id="remark" type="text" class="form-text-input short-input" name="remark">
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="space clearfix">&nbsp;</div>
+        <div class="house-info-btn clerfix">
+            <div class="add">
+              <a style="background-color: #fe504f">  <button type="button" id="btn-submit" class="js-submit11 btn-registered" onclick="check_info()">保存修改</button></a>
+
+            </div>
+        </div>
+      </form>
+    </div>
+    <!-- 基本资料 -->
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mvalidate.css">
+<script type="text/javascript">
+ apiready=function(){
+//获取基本信息
+  var houseid=$api.getStorage("houseid");
+  api.ajax({
+    url: 'http://123.58.253.71:8808/FHMYSQL/get_baseInfo',
+    method: 'post',
+    data: {
+        values: {
+            houseid:houseid
+        }
+    }
+  },function(ret, err){
+      if (ret) {
+       var location=ret.LOCATION;
+       var result=location.replace(/[\u4E00-\u9FA5]/g, ",");
+       var data=result.split(",");
+      // alert(data);
+       $('#position_one').val(data[0]);
+       $('#position_two').val(data[1]);
+       $('#position_three').val(data[3]);
+      //实际楼层
+       $("#floor").val(ret.FLOOR);
+     //几居室 下拉框
+       $("select#num").val(ret.ROOM);
+    //面积
+       $('#area').val(ret.AREA);
+    //总售价
+       $('#total').val(ret.TOTALPRICE);
+    //关键字
+       var keyword=ret.KEYWORD.split(",");
+       $("#test").checked=true;
+       for (var i = 0; i < keyword.length; i++) {
+         var id="#"+keyword[i];
+          $(id).checked=true;
+       }
+    //备注
+       $('#remark').val(ret.REMARK);
+    } else {
+        alert("失败，请稍后重试");
+     }
+});
+}
+     function check_info(){
+       var location1=$("#position_one").val();
+       var location2=$("#position_two").val();
+       var location3=$("#position_three").val();
+       var floor=$("#floor").val();
+       var room=$('#num option:selected').val();
+       var area=$("#area").val();
+       var total=$("#total").val();
+       var check=document.getElementsByName("checkbox");
+       var s='';
+       for(var i=0; i<check.length; i++){
+            if(check[i].checked) s+=check[i].value+',';  //如果选中，将value添加到变量s中
+       }
+      //alert(location1+location2+location3+floor+room+area+total);
+       var msg1=/^[1-9]\d*$/;
+       var msg2=/^[0-9]+([.]{1}[0-9]+){0,1}$/;
+       if(!msg1.test(location1)||"0"==location1){
+         api.toast({
+               	msg:'楼层数据格式错误！'
+           	});
+         return false;
+       }
+       if(!msg1.test(location2)||"0"==location2){
+         api.toast({
+                 msg:'单元数据格式错误！'
+             });
+         return false;
+       }
+       if(!msg1.test(location3)||"0"==location3){
+         api.toast({
+                 msg:'房间号数据格式错误！'
+             });
+         return false;
+       }
+       if(!msg1.test(floor)||"0"==floor){
+         api.toast({
+                 msg:'楼层数据格式错误！'
+             });
+         return false;
+       }
+       if(!msg2.test(area)||"0"==area){
+         api.toast({
+                 msg:'总面积数据格式错误！'
+             });
+         return false;
+       }
+       if(!msg2.test(total)){
+         api.toast({
+                 msg:'总价数据格式错误！'
+             });
+         return false;
+       }
+       if(room==""){
+         api.toast({
+                 msg:'请选择房间数！'
+             });
+         return false;
+       }
+       if(s==""){
+         api.toast({
+                 msg:'请选择标签！'
+             });
+         return false;
+       }
+       //调用存储方法
+       var values={};
+       values["userid"]=$api.getStorage("userInfo").userId;
+       values["housename"]=document.getElementById("housename").innerHTML;
+       //alert(values["housename"]);
+       var x=$("#form2").serializeArray();
+       $.each(x, function(i, field){
+         var key=field.name,value=field.value;
+         if(values[key]){
+            values[key]=values[key]+","+value;
+         }else {
+            values[key]=value;
+         }
+       });
+       api.ajax({
+         url: 'http://123.58.253.71:8808/FHMYSQL/selfmsg/input_two',
+         method: 'post',
+         dataType:'text',
+         data: {
+           values:values
+         }
+       },
+      function(ret, err){
+        if(ret){
+          if (ret!="error") {
+             $api.setStorage('houseid', ret);
+           //  alert(ret);
+             api.openWin({
+                name: '预览',
+                url: 'preview.html'
+             });
+          }
+        }
+         else {
+          alert("失败，请稍后重试");
+           }
+       });
+     }
+</script>
+</html>

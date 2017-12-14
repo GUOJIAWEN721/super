@@ -1,0 +1,294 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/aui-slide.css" />
+    <link rel="stylesheet" href="js/swiper/swiper.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 预览
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+    <!-- 轮播 -->
+    <div id="aui-slide">
+        <div class="aui-slide-wrap" id="imgbox"> 
+            <div class="aui-slide-node bg-dark">
+                <img src="images/slide.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="images/slide.png" />
+            </div>
+            <div class="aui-slide-node bg-dark">
+                <img src="images/slide.png" />
+            </div>
+        </div>
+        <!--分页容器-->
+        <div class="aui-slide-page-wrap"></div>
+
+    </div>
+    <!-- 轮播 -->
+
+    <!-- 选项 -->
+    <div class="touch-slide">
+        <div class="layer-sp-box swiper-container swiper-lou" style="padding: 0 10px;">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-1.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">房源位置</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-2.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">户型图</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-3.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">实景采光</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap" onclick="change_img(3)">
+                        <dt>
+                            <img src="images/icon-4.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">室内实景</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-5.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">窗外景观</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-6.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">全景小区</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap" onclick="change_img(4)">
+                        <dt>
+                            <img src="images/icon-7.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">公共设施</dd>
+                    </dl>
+                </div>
+                <div class="swiper-slide">
+                    <dl class="indexsp-show-wrap">
+                        <dt>
+                            <img src="images/icon-8.png" class="aui-img-object pro lazy yuan-webp">
+                        </dt>
+                        <dd class="sp-title-wrap">全景周边</dd>
+                    </dl>
+                </div>
+            </div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    <!-- 选项 -->
+
+    <!-- 明细 -->
+    <div class="house-detail">
+        <div class="house-title">
+            <span class="left main">海润国际公寓</span>
+            <div class="f_right">
+                <span class="sub">3居&nbsp;&nbsp;140㎡&nbsp;&nbsp;900万&nbsp;</span>
+                <span class="see">|&nbsp;&nbsp;0次浏览</span>
+            </div>
+        </div>
+        <ul class="house-condition clearfix">
+            <li>
+                <a href="#">
+                    <div>
+                        <span>
+                            <img alt="" src="images/icon-9.png">&nbsp;采光时间
+                        </span>
+                    </div>
+                    <p>3小时（冬至日）</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div>
+                        <span>
+                            <img alt="" src="images/icon-10.png">&nbsp;临街
+                        </span>
+                    </div>
+                    <p>3小时（冬至日）</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <div>
+                        <span>
+                            <img alt="" src="images/icon-11.png">&nbsp;物业费
+                        </span>
+                    </div>
+                    <p>3小时（冬至日）</p>
+                </a>
+            </li>
+        </ul>
+        <div class="house-info">
+            <dl id="check">
+                <dt>标签
+                    <span class="f_right"></span>
+                </dt>
+            </dl>
+            <dl id="trade">
+                <dt>交易属性
+                    <span class="f_right" ></span>
+                </dt>
+                <dd>交易年限:<span id="trade_one"></span></dd>
+                <dd>产权所属:<span id="trade_two" value=""></span></dd>
+                <dd>抵押信息:<span id="trade_three"></span></dd>
+            </dl>
+            <dl id="tax">
+                <dt>主要税费
+                    <span class="f_right" ></span>
+                </dt>
+                <dd>个税:<span id="tax_one"></span></dd>
+                <dd>契税:<span id="tax_two"></span></dd>
+                <dd>营业税:<span id="tax_three"></span></dd>
+            </dl>
+            <dl id="info">
+                <dt id="info_one">小区详情</dt>
+                <dd id="info_two">双卫</dd>
+                <dd id="info_three">有电梯</dd>
+            </dl>
+        </div>
+    </div>
+    <!-- 明细 -->
+    <script src="js/aui-slide.js"></script>
+    <script type="text/javascript" src="js/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="js/api.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/aui-slide.js"></script>
+    <script type="text/javascript" src="js/commenjs.js"></script>
+    <script type="text/javascript" src="js/swiper/swiper.min.js"></script>
+    <script type="text/javascript" src="js/checkbox-sl.js"></script>
+    <script type="text/javascript">
+        // 轮播
+        var slide = new auiSlide({
+            container: document.getElementById("aui-slide"),
+            "height": 300,
+            "speed": 500,
+            "autoPlay": 3000, //自动播放
+            "loop": true,
+            "pageShow": true,
+            'dotPosition': 'center'
+        })
+        // 滑动
+        var swiper = new Swiper('.swiper-lou', {
+            pagination: '.swiper-pagination',
+            slidesPerView: 5,
+            paginationClickable: true,
+            spaceBetween: 8,
+            prevButton: '.swiper-button-prev',
+            nextButton: '.swiper-button-next'
+        });
+        //切换图片
+		function change_img(type){
+          var houseid=api["pageParam"]["houseid"];
+          var name;
+          if(type=="3"){
+            name="http://123.58.253.71:8808/chuangchuangImg/indoorImg/";
+          }else if (type=="4") {
+            name="http://123.58.253.71:8808/chuangchuangImg/outdoorImg/";
+          }
+          api.ajax({
+              url: 'http://123.58.253.71:8808/FHMYSQL/get_img',
+              method: 'post',
+              data: {
+                  values: {
+                  	houseid:'i120171204102031813',
+                      //houseid:houseid,
+                      type:type
+                  }
+              }
+           },function(ret, err){
+              if (ret) {        
+                var imgname=ret.IMGNAME.split(";");               
+                var photo="";
+                for (var i = 0; i < imgname.length-1; i++) {
+                  var imgpath=name+imgname[i];                
+                  photo+='<div class="aui-slide-node bg-dark"><img src="'+imgpath+'"/></div>';
+                }
+                alert(photo);
+                document.getElementById('imgbox').innerHTML=photo;
+              } else {
+                  alert( JSON.stringify( err ) );
+              }
+          });
+      }
+      //获取单个的房书信息
+        apiready=function(){
+             var houseid=api["pageParam"]["houseid"];
+              api.ajax({
+                  url: 'http://123.58.253.71:8808/FHMYSQL/get_houseInfo',
+                  method: 'post',
+                  data: {
+                      values: {
+                          KEYDATA:'i120171204102031813'
+                      }
+                  }
+              },function(ret, err){
+                  if (ret) {
+                    //将标签绑定
+                    var keyword=ret.KEYWORD.split(",");
+                    for(var i=0;i<keyword.length;i++){
+                       var checkbox='<dd><span>'+keyword[i]+'</span></dd>';
+                    }
+                    var sp;
+                    sp+=checkbox;
+                    $("#check").append(keyword);
+                    //交易属性
+                    $("#trade_two").html(ret.INCOMMON);
+                    //抵押信息
+                    $('#trade_three').html(ret.STATUS);
+                    //个税
+                    $('#tax_one').html(ret.PERSONALTAX);
+                    //契税
+                    $('#tax_two').html(ret.SALESTAX);
+                    //营业税
+                    $('#tax_three').html(ret.DEEDTAX);
+                    //详细介绍
+
+                  } else {
+                      alert( JSON.stringify( err ) );
+                  }
+              });
+            }
+    </script>
+</body>
+
+</html>

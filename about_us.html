@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>关于我们</title>
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/message.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 关于我们
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+    <!-- 我的资料 -->
+    <div id="info" class="about-cc">
+        <div class="top-logo">
+            <img src="images/logo-2.png">
+        </div>
+        <div class="about-content">
+            <p>幢幢看房APP为官方手机客户端，为购房者提供房源信息搜索、浏览功能，为业主提供在线委托及在售房源管理功能，让您的房产交易更便捷。</p>
+            <p>幢幢看房APP为官方手机客户端，为购房者提供房源信息搜索、浏览功能，为业主提供在线委托及在售房源管理功能，让您的房产交易更加便捷。让您的房产交易更加便捷。</p>
+        </div>
+    </div>
+    <!-- 我的资料 -->
+
+    <div class="banben">
+        <span id="versions"></span>
+    </div>
+</body>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript">
+apiready = function() {
+
+	$api.byId('versions').innerHTML="当前版本"+api.appVersion; 
+};
+</script>
+</html>

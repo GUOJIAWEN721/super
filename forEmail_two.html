@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 绑定安全邮箱
+        <a class="aui-btn aui-pull-right"></a>
+    </header>
+    <div class="login-registered-box">
+        <div class="add-email">
+            你的邮箱
+            <span id="emailpath"></span>
+            <br> 会收到一封含有数字验证码的邮件
+        </div>
+        <form class="js-login-form mt15" method="#" action="#">
+            <div class="login-content">
+                <div class="forms-list">
+                    <div class="forms-content clearfix">
+                        <div class="forms-icon f_left">
+                            验证码
+                        </div>
+                        <div class="forms-input f_left">
+                            <input id="code" type="text" name="login" class="js-login-phone" placeholder="请输入验证码">
+                        </div>
+                    </div>
+                </div>
+                <div class="forms-list">
+                    <div class="forms-content clearfix" style="border-bottom:none;">
+                        <button class="f_right re-code">57秒后重发验证码</button>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-join-cc mt15">
+                <button type="submit" id="btn-submit" class="js-submit11 btn-registered" onclick="checkcode();">确定</button>
+            </div>
+        </form>
+    </div>
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script src="js/layer_dialog/layer.js"></script>
+<link rel="stylesheet" type="text/css" href="js/layer_dialog/need/layer.css" />
+<script type="text/javascript">
+   $(function(){
+     $("#emailpath").html($api.getStorage("userEmail"));
+   })
+   function checkcode(){
+     var code=document.getElementById("code").value;
+     if(""==code){
+       layer.open({
+           content: '请输入验证码！',
+           time: 2//2秒钟后消失
+       });
+     }else {
+       api.ajax({
+         url: 'http://123.58.253.71:8808/FHMYSQL/checkEmail',
+         method: 'post',
+         dataType:'text',
+         data: {
+            values:{
+              code:code,
+              userid:$api.getStorage("userInfo").userId
+            }
+         }
+       },
+      function(ret, err){
+        if(ret=="error"){
+          alert("验证码错误！");
+        }
+        if(ret=="success"){
+          api.openWin({
+             name: '账户安全',
+             url: 'account_security.html'
+          }
+       });
+     }
+   }
+</script>
+</html>

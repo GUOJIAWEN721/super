@@ -1,0 +1,257 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/house.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left" onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 产权税费
+        <a class="aui-btn aui-pull-right">
+        </a>
+    </header>
+
+    <!-- 基本资料 -->
+    <div id="info">
+      <form id="form1" action="">
+        <div class="house-info special-info clearfix">
+            <div class="block-item clearfix" style="padding-top: 1px;">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">上次登记时间
+                        <i class="aui-iconfont aui-icon-question"></i>
+                    </em>
+                    <span class="input-wrapper aui-list-item-input">
+                        <select id="sel_one" name="sel_one" data-required="true" data-descriptions="sel_one">
+                            <option value="" selected disabled>请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        年
+                        <select id="sel_two" name="sel_two" data-required="true" data-descriptions="sel_two">
+                            <option value="" selected disabled>请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        月
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">共有情况
+                        <i class="aui-iconfont aui-icon-question"></i>
+                    </em>
+                    <span class="input-wrapper aui-list-item-input">
+                        <select id="sel_three" name="sel_three" data-required="true" data-descriptions="sel_three">
+                            <option value="" selected disabled>请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">抵押状态
+                        <i class="aui-iconfont aui-icon-question"></i>
+                    </em>
+                    <span class="input-wrapper aui-list-item-input">
+                        <select id="sel_four" name="sel_four" data-required="true" data-descriptions="sel_four">
+                            <option value="" selected disabled>请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <div class="form-row form-text-row">
+                    <em class="form-text-label">个税（预估）</em>
+                    <span class="input-wrapper">
+                        <input id="one" name="one" type="text" class="form-text-input short-input" data-pattern="^[0-9]+$"  data-required="true" data-descriptions="one">万元
+                    </span>
+                </div>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">营业税（预估）</em>
+                    <span class="input-wrapper">
+                        <input id="two" name="two" type="text" class="form-text-input short-input" data-pattern="^[0-9]+$"  data-required="true" data-descriptions="two">万元
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">契税（预估）</em>
+                    <span class="input-wrapper">
+                        <input id="three" name="three" type="text" class="form-text-input short-input" data-pattern="^[0-9]+$"  data-required="true" data-descriptions="three">万元
+                    </span>
+                </label>
+            </div>
+        </div>
+
+        <div class="space clearfix">&nbsp;</div>
+        <div class="house-info-btn clerfix">
+            <div class="add">
+              <!--  <a href="#">下一步</a>!-->
+              <a style="background-color: #fe504f"><button type="submit" id="btn-submit" class="js-submit11 btn-registered">确认修改</button></a>
+
+            </div>
+        </div>
+      </form>
+    </div>
+    <!-- 基本资料 -->
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mvalidate.css">
+<script type="text/javascript">
+function trim(str){
+　　 return str.replace(/[\u4E00-\u9FA5]/g, ",");
+}
+apiready = function(){
+  //获取基本信息
+  var houseid=$api.getStorage("houseid");
+  api.ajax({
+    url: 'http://123.58.253.71:8808/FHMYSQL/get_taxInfo',
+    method: 'post',
+    data: {
+        values: {
+            houseid:houseid
+        }
+    }
+  },
+ function(ret, err){
+   if (ret) {
+      //ret为返回数据 将数据进行绑定
+      //登记时间 年 月
+      var time=ret.BOARDINGTIME;
+      var result=time.replace(/[\u4E00-\u9FA5]/g, ",");
+      var data=result.split(",");
+      $("#sel_one").val(data[0]);
+      $("#sel_two").val(data[1]);
+      alert(data);
+      //共有情况
+      var incommon=ret.INCOMMON;
+      $("#sel_three").val(incommon);
+      //抵押状态
+      var status=ret.STATUS;
+      $("#sel_four").val(status);
+      //个税
+      var personaltax=ret.PERSONALTAX;
+      document.getElementById("one").value=personaltax;
+      //契税
+      var deedtax=ret.DEEDTAX;
+      document.getElementById("three").value=deedtax;
+      //营业税
+      var salestax=ret.SALESTAX;
+      document.getElementById("two").value=salestax;
+   } else {
+     alert("失败，请稍后重试");
+   }
+  });
+
+  $("#form1").mvalidate({
+            type:1,
+            onKeyup:true,
+            sendForm:true,
+            firstInvalidFocus:false,
+            valid:function(event,options){
+                //点击提交按钮时,表单通过验证触发函数
+                       var values={};
+                       values["houseid"]=$api.getStorage("houseid");
+                       var x=$("#form1").serializeArray();
+                       $.each(x, function(i, field){
+                         var key=field.name;
+                          values[key]=field.value;
+                       });
+
+                      // var formData = $("#form1").serializeArray();
+                      // alert(values);
+                       api.ajax({
+                         url: 'http://123.58.253.71:8808/FHMYSQL/edit_taxinfo',
+                         method: 'post',
+                         dataType:'text',
+                         data: {
+                           values: values
+                         }
+                       },
+                      function(ret, err){
+                        if (ret) {
+                           api.openWin({
+                             name:'预览',
+                             url: 'preview.html'
+                           });
+                      } else {
+                          alert("失败");
+                            api.alert({ msg: JSON.stringify(err) });
+                           }
+                       });
+
+                 event.preventDefault();
+            },
+            invalid:function(event, status, options){
+                //点击提交按钮时,表单未通过验证触发函数
+            },
+            eachField:function(event,status,options){
+                //点击提交按钮时,表单每个输入域触发这个函数 this 执向当前表单输入域，是jquery对象
+            },
+            eachValidField:function(val){},
+            eachInvalidField:function(event, status, options){},
+            descriptions:{
+                sel_one:{
+                    required : '请选择登记年份'
+                },
+                sel_two:{
+                    required : '请选择等级月份'
+                },
+                sel_three:{
+                    required : '请选择共有情况'
+                },
+                sel_four : {
+                    required : '请选择抵押状态'
+                },
+                one:{
+                    required : '请输入个税情况',
+                    pattern : '个税数据格式不合法'
+                },
+                two:{
+                    required : '请输入营业税情况',
+                    pattern : '营业税数据格式不合法'
+                },
+                three:{
+                    required : '请输入契税情况',
+                    pattern : '契税数据格式不合法'
+                }
+            }
+        });
+}
+
+//保存到服务器并进行页面跳转
+
+</script>
+</html>

@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>忘记密码</title>
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 忘记密码
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+    <!-- 我的资料 -->
+    <div id="info" class="user-content">
+        <div class="cc-user-list safety clearfix">
+            <form class="js-login-form" method="#" action="#">
+                <div class="login-content">
+                    <div class="forms-list">
+                        <div class="forms-content clearfix">
+                            <div class="forms-icon f_left">
+                                密码
+                            </div>
+                            <div class="forms-input f_left">
+                                <input id="password1" type="password" name="name" class="js-login-phone" placeholder="6-20位数字或字母">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="forms-list">
+                        <div class="forms-content clearfix">
+                            <div class="forms-icon f_left">
+                                确认密码
+                            </div>
+                            <div class="forms-input f_left">
+                                <input id="password2" type="password" name="password" class="js-login-pwd" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-join-cc">
+                    <button type="submit" id="btn-submit" class="js-submit11 btn-registered" onclick="check_Info()">确定</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- 我的资料 -->
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/aui-slide.js"></script>
+<script type="text/javascript" src="js/swiper/swiper.min.js"></script>
+<script type="text/javascript" src="js/checkbox-sl.js"></script>
+<script type="text/javascript" src="js/jquery-mvalidate.js"></script>
+<link rel="stylesheet" type="text/css" href="css/mvalidate.css">
+<script src="js/layer_dialog/layer.js"></script>
+<script type="text/javascript">
+function check_Info(){
+  //判断密码
+  var password1=$api.byId("password1").value;
+  var password2=$api.byId("password2").value;
+  var mag=/^[a-zA-Z0-9]{6,20}$/;
+  if(!mag.test(password1)){
+    layer.open({
+        content: '密码格式不合法，请输入长度为6到20的数字或字母！',
+        skin:"msg",
+        time: 2//2秒钟后消失
+    });
+    $("#pwd1").focus();
+    document.getElementById("pwd1").value="";
+    return false;
+  }
+  if (password1!=password2) {
+    layer.open({
+        content: '密码不一致，请重新输入！',
+        skin:"msg",
+        time: 2//2秒钟后消失
+    });
+    $("#pwd2").focus();
+    document.getElementById("pwd2").value="";
+    return false;
+  }
+  //提交密码 并进行页面跳转
+  var userId=$api.getStorage("userInfo").userId;
+  api.ajax({
+    url: 'http://123.58.253.71:8808/FHMYSQL/change_pwd',
+    method: 'post',
+    dataType:'text',
+    data: {
+      values: {
+        userName:$api.getStorage("userInfo").userName,
+        userId:userId,
+        pwd:password1
+      }
+    }
+  },
+  function(ret, err){
+    if(ret){
+      if (ret=="success") {
+        api.openWin({
+            name: 'main',
+            url: 'login.html',
+         });
+      }
+    }else {
+      layer.open({
+        content: '发生了一个错误！',
+        skin:"msg",
+        time:2
+      });
+    }
+   });
+}
+</script>
+</html>

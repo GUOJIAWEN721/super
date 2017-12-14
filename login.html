@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
+</head>
+
+<body class="layout-w">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 登录
+        <a class="aui-btn aui-pull-right"></a>
+    </header>
+    <div class="login-registered-box">
+        <ul class="login-tab clearfix">
+            <li class="active">
+                <a href="selfMessage.html">账号登录</a>
+            </li>
+            <li>
+                <a href="register.html">快速注册</a>
+            </li>
+        </ul>
+        <form class="login-form" id="form_login">
+            <div class="login-content">
+                <div class="forms-list">
+                    <div class="forms-content clearfix">
+                        <div class="forms-icon f_left" style="width: 50px;">
+                            账号
+                        </div>
+                        <div class="forms-input f_left">
+                            <input id="login" type="text" name="login" class="js-login-phone" placeholder="用户名或手机号">
+                        </div>
+                    </div>
+                </div>
+                <div class="forms-list">
+                    <div class="forms-content clearfix">
+                        <div class="forms-icon f_left" style="width: 50px;">
+                                                                    密码
+                        </div>
+                        <div class="forms-input f_left">
+                            <input id="password" type="password" name="password" class="js-login-pwd" placeholder="您的密码">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="forget-pwd">
+             <!--   <a href="#">忘记密码</a>-->
+            </div>
+            <div class="btn-join-cc">
+                <button type="button" id="btn-submit" onclick="check()" class="js-submit11 btn-registered">登&nbsp;&nbsp;录</button>
+                <!-- 所有信息都填写正确后，再显示红色的按钮 
+                <button type="button" id="btn-submit" class="js-submit11 btn-registered">登&nbsp;&nbsp;录</button>
+                -->
+            </div>
+        </form>
+
+    </div>
+</body>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.validation.min.js"></script>
+<script type="text/javascript" src="js/myjs/checklogin.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+</html>

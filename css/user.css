@@ -1,0 +1,375 @@
+@charset "utf-8";
+
+/* addtime:2017/09/11 author:SeinaLiu */
+
+/*================ 我的资料 ================*/
+.cc-user-list{margin-bottom:10px;}
+.user-content .block-item {
+	background: #fff;
+	border-bottom: 1px #dfdfdf solid;
+	padding-left: 10px;
+}
+.user-content .block-item:last-child {
+	border-bottom: none;
+}
+.user-content .form-row {
+	display: block;
+	padding-left: 60px;
+	position: relative;
+	height: 45px;
+	line-height: 45px;
+}
+.user-content .form-text-label {
+	position: absolute;
+	font-size: .7rem;
+	display: block;
+	width: 60px;
+	top: 0;
+	left: 0;
+}
+.user-content .input-wrapper {
+	display: block;
+	width: 100%;
+	zoom: 1;
+}
+.user-content .input-wrapper:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+.user-content .input-region {
+	width: 100%;
+	table-layout: fixed;
+	border-collapse: separate;
+}
+.user-content .input-region select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	width: auto;
+	font-size: 12px;
+	border: 0 none;
+	line-height: 15px;
+	border-radius: 0;
+	padding: 0 5px 0;
+	max-width: 80px;
+}
+.user-content .input-region>span {
+	float: none;
+	display: table-cell;
+	width: 1%;
+	padding-right: 5px;
+}
+.user-content .form-text-input {
+	display: block;
+	width: 100%;
+	border-radius: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	border: 0 none;
+	padding: 7px 5px 7px;
+	font-size: .7rem;
+	line-height: 30px;
+	float: left;
+}
+
+.user-info-btn {
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    background: #f5f5f5;
+    width: 100%;
+}
+.user-info-btn .add {
+    text-align: center;
+    font-size: 14px;
+    padding: 0 20px;
+    margin: 10px 0;
+    line-height: 40px;
+    height: 40px;
+}
+.user-info-btn .add a {
+    color: #ffffff;
+    background: #fe504f;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    display: block;
+}
+
+.card-img {
+    display: inline-block;
+    margin: 7px 3px 7px 0;
+    height: 75px;
+    width: 75px;
+    line-height: 75px;
+    background-color: rgb(240, 241, 246);
+    text-align: center;
+	color: #666;
+	float: left;
+}
+.card-img i{font-size: 28px;}
+.card-img div{
+	display: inline-block;
+    height: 75px;
+	width: 75px;
+	overflow: hidden;
+    line-height: 75px;
+    background-color: rgb(240, 241, 246);
+}
+/*================ 我的资料 ================*/
+
+/*================ 设置中心 ================*/
+.account-base{padding: 10px;}
+.account-base .aui-list-item-media {float: left;}
+.header-enter-arrow i {
+    display: block;
+    text-align: right;
+    width: 23px;
+    height: 60px;
+    line-height: 60px;
+    color: #999;
+}
+.ucenter-header-right{
+	width: 60px;
+    height: 60px;
+    position: relative;
+    float: right;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    -webkit-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: center;
+    -webkit-align-items: flex-start;
+	align-items: flex-start;
+	border: 2px solid #f49395;
+    border-radius: 31px;
+}
+.ucenter-header-right img{    
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.header-name-box {
+    font-size: 14px;
+    color: #444;
+    padding-top: 11px;
+    margin-left: 10px;
+}
+.header-enter-box {
+    font-size: 13px;
+    color: #999;
+    margin-left: 10px;
+}
+.chuang_about {
+    position: relative;
+}
+.order_all dl {
+    height: 45px;
+    line-height: 45px;
+    overflow: hidden;
+    position: relative;
+}
+.order_all .all_more dt {float: left;}
+.order_all .all_more dt b {
+    font-size: .7rem;
+    font-weight: normal;
+    margin-left: 12px;
+    color: #666;
+}
+.order_all .all_more dd {
+    float: right;
+    font-size: 12px;
+    height: 45px;
+}
+.order_all .all_more dd b {
+    font-size: 12px;
+    color: #999;
+    position: relative;
+    font-weight: normal;
+    text-decoration: none;
+    margin-right: 32px;
+}
+.order_all .all_more dd i {
+    font-size: 12px;
+    width: 32px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    color: #9f9f9f;
+    top: 0;
+    right: 0;
+}
+.order_all .top:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #D9D9D9;
+    color: #D9D9D9;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}
+.house-info-btn {
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.house-info-btn .add {
+    text-align: center;
+    font-size: 14px;
+    padding: 0 10px;
+    margin: 10px 0;
+    line-height: 40px;
+    height: 40px;
+}
+.house-info-btn .add a {
+    color: #ffffff;
+    background: #fe504f;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    display: block;
+}
+/*================ 设置中心 ================*/
+
+/*================ 修改密码 ================*/
+.safety{
+    padding: 10px;
+    background-color: #fff;
+}
+.safety h3{
+    font-size: .8rem;
+    color: #262626;
+}
+.safety .phone-cur{
+    width: 96%;
+    font-size: .6rem;
+    color: #5B5B5B;
+    margin: 10px auto 15px;
+    padding: 10px 5px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #F5F5F5;
+}
+.safety .phone-cur span{
+    color: #474747;
+    padding: 0 5px;
+}
+.safety .forms-content .forms-icon{
+    padding: 0;
+    line-height: 30px;
+    height: 30px;
+    width: 18%;
+    text-align: left;
+    font-size: .7rem;
+}
+.safety .forms-content .forms-input {width: 82%;}
+.safety .forms-content .forms-input input {
+    height: 30px;
+    line-height: 30px;
+    border: 0 none;
+    font-size: .7rem;
+    color: #333;
+    width: 100%;
+    outline: 0;
+}
+.safety .code-box .forms-border {width: 60%;}
+.safety .code-box .forms-content .forms-input {width: 46%;}
+.safety .code-box{
+    width: 96%;
+    margin: 5px auto;
+}
+.safety .code-box .btn-code {
+    width: 36%;
+    padding-left: 3%;
+}
+.safety .code-box .btn-code button {
+    width: 100%;
+    height: 32px;
+    line-height: 32px;
+    border: 1px solid #FFE24F;
+    border-radius: 3px;
+    color: #262626;
+    font-size: .7rem;
+    background-color: #FFE24F;
+    cursor: pointer;
+}
+/*================ 修改密码 ================*/
+
+/*================ 账户安全 ================*/
+.security{
+    position: relative;
+    height: 45px;
+    line-height: 45px;
+}
+
+/*============== 侧拉个人中心 ==============*/
+.user-main-bg{
+	background-color: rgba(0,0,0,.5);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top:0;
+	right: 0;
+	z-index: 10;
+}
+.user-main-bg .user-main{
+	width: 70%;
+	height: 100%;
+	float: left;
+	background-color: #FFFFFF;
+	text-align: center;
+}
+.user-main-bg .user-main .user-main-head{
+	margin: 65px auto 0 auto;
+	width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.user-main-bg .user-main .user-main-head img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+.user-main-bg .user-main p{
+	margin-top: 20px;
+	text-align: center;
+	font-size: .8rem;
+	font-weight: 600;
+}
+.user-main-bg .user-main .user-main-vip{margin-top: 10px;}
+.user-main-bg .user-main .user-main-vip span{
+	font-size: .6rem;
+	vertical-align: top ;
+}
+.user-main-bg .user-main .user-main-vip img{
+	width: 17px;
+	display: inline-block;
+}
+.user-main-bg .user-main ul{
+	margin: 0 auto;
+	width: 74%;
+}
+.user-main-bg .user-main ul li{
+	margin-top: 25px;
+	text-align: left;
+}
+.user-main-bg .user-main ul li img{
+	margin-right: 8px;
+	width: 21px;
+	display: inline-block;
+}
+.user-main-bg .user-main ul li a{
+	color: #000;
+	font-size: .7rem;
+	vertical-align: top;
+}
+/*============== 侧拉个人中心 ==============*/

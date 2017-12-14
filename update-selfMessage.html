@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"
+    />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>我的资料</title>
+    <link rel="stylesheet" type="text/css" href="css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css" />
+    <link rel="stylesheet" type="text/css" href="css/user.css" />
+</head>
+
+<body class="layout-w" style="background-color:#F6F6F6;">
+    <header class="aui-bar aui-bar-nav" id="header">
+        <a class="aui-btn aui-pull-left"  onclick="closeWin()">
+            <i class="aui-iconfont aui-icon-left"></i>
+        </a> 我的资料
+        <a class="aui-btn aui-pull-right">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </header>
+
+   <!-- 我的资料 action="http://192.168.3.20:8080/FHMYSQL/addSelfMessage"-->
+    <form   method="POST" id="form_selfmessage" >
+    <div id="info" class="user-content">
+        <div class="cc-user-list clearfix">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">姓名</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="name" id="name" class="form-text-input" placeholder="Jason">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">手机号</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="phone" id="phone" class="form-text-input" placeholder="138****9898">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">微信号</em>
+                    <span class="input-wrapper">
+                        <input ype="text" name="WeChat" id="WeChat" class="form-text-input" placeholder="138****9898">
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="cc-user-list clearfix">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">公司</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="company" id="company" class="form-text-input" placeholder="公司">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">门店</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="store" id="store" class="form-text-input" placeholder="门店">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">职位</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="position" id="position" class="form-text-input" placeholder="职位">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">证件号码</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="IDCard" id="IDCard" class="form-text-input" placeholder="证件号码">
+                    </span>
+                </label>
+            </div>
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row">
+                    <em class="form-text-label">从业时间</em>
+                    <span class="input-wrapper">
+                        <input type="text" name="workhours" id="workhours" class="form-text-input" placeholder="从业时间(默认以年为单位)">
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="hidden-input">
+        	<input type="hidden" name="imagesAddress" id="imagesAddress" value="">	
+        </div>
+        <div class="cc-user-list user-info">
+            <div class="block-item clearfix">
+                <label class="form-row form-text-row" style="height: auto;">
+                    <em class="form-text-label">上传证件</em>
+                    <span class="input-wrapper">
+                        <!-- 上传前样式 -->
+                         <a class="card-img" id="images1" display="none">
+                            <img alt="" src="" id="photo1" >
+                        </a>
+                        <a class="card-img"  id="images2" display="none" >
+                            <img alt="" src="" id="photo2" >
+                        </a>
+                          <a class="card-img"  id="images3" display="none">
+                            <img alt="" src="" id="photo3">
+                        </a>
+                          <a class="card-img"  id="images4" display="none">
+                            <img alt="" src="" id="photo4">
+                        </a>
+                          <a class="card-img"  id="images5" display="none">
+                            <img alt="" src="" id="photo5">
+                        </a>
+                          <a class="card-img"  id="images6" display="none">
+                            <img alt="" src="" id="photo6"> 
+                        </a>
+                       <!-- <a href="#" class="card-img"  >
+                            <i class="aui-iconfont aui-icon-plus" onclick="shangchuan()"></i>
+                        </a>-->
+                    
+                        <!-- 上传前样式 -->
+                        <!-- 上传后样式 -->
+                        <!-- 
+                        <a class="card-img">
+                            <img alt="" src="images/card.png">
+                        </a>
+                        <a class="card-img">
+                            <img alt="" src="images/card.png">
+                        </a>
+                        <a href="#" class="card-img">
+                            <i class="aui-iconfont aui-icon-plus"></i>
+                        </a> -->
+                        <!-- 上传后样式 -->
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="space clearfix">&nbsp;</div>
+        <div class="user-info-btn clerfix">
+            <div class="add">
+                <!--<a href="javascript:save();">保存</a>    <a href="javascript:document:form_selfmessage.submit();" onclick="check()">保存</a>  -->
+             
+                 <a onclick="checks()">保存</a>
+            </div>
+        </div>
+    </div>
+    </form>
+    <!-- 我的资料 -->
+</body>
+<script type="text/javascript">
+	apiready = function () {
+		api.ajax({
+        	url: 'http://123.58.253.71:8808/FHMYSQL/selfmsg/goEditSelfMessage',
+        	//url: 'http://192.163.3.20:8080/FHMYSQL/selfmsg/goEditSelfMessage',
+        	method: 'post',
+        	dataType:'json',
+        	async:true,
+       		data: {
+            values: {
+               userId:$api.getStorage("userInfo").userId
+               //$api.getStorage("userInfo").userId
+               //userId:1
+            }
+          }
+    	},function(ret, err) {
+        	if (ret) {
+           		$api.byId("name").value=ret.NAME;
+           		$api.byId("phone").value=ret.PHONE;
+           		$api.attr($api.byId("phone"), 'readonly',true);
+           		$api.byId("WeChat").value=ret.WECHAT;
+           		$api.byId("company").value=ret.COMPANY;
+           		$api.byId("store").value=ret.STORE;
+           		$api.byId("position").value=ret.POSITION;
+           		$api.byId("IDCard").value=ret.IDCARD;
+            	$api.byId("workhours").value=ret.WORKHOURS;
+            	$api.byId("imagesAddress").value=ret.IMAGE;
+            	
+            	var strs= new Array(); //定义一数组
+            	strs=ret.IMAGE.split(";"); //字符分割 
+            	var j=0;
+            	for (i=0;i<strs.length;i++){ 
+            		j=i+1;
+            		$api.byId("photo"+j).src="http://123.58.253.71:8808/chuangchuangImg/selfImg/"+strs[i];
+            		
+                }
+        	} else {      		
+            	alert("请求出错，请返回重试！");
+       	 	}
+    	});
+    }
+</script>
+<script type="text/javascript" src="js/api.js"></script>
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/commenjs.js"></script>
+<script type="text/javascript" src="js/myjs/selfcheck.js"></script>
+</html>
