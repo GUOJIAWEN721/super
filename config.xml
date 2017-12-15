@@ -1,4 +1,4 @@
- <widget id="A6068799977423"  version="0.0.1">    <name>siwsuper</name>    <description>        Example For APICloud.    </description>    <author email="developer@apicloud.com" href="http://www.apicloud.com">        Developer    </author>  <content src="login.html"/>
+ <widget id="A6068791746802"  version="0.0.1">    <name>super</name>    <description>        Example For APICloud.    </description>    <author email="developer@apicloud.com" href="http://www.apicloud.com">        Developer    </author>  <content src="login.html"/>
   <preference name="pageBounce" value="false"/>
   <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
   <preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
